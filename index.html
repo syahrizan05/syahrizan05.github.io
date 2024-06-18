@@ -1,5 +1,44 @@
-<html>
-    <body>
-        test
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate Our App</title>
+</head>
+<body>
+  <script>
+    function isMobileDevice() {
+      // Check for common mobile keywords in the user agent string
+      const userAgent = navigator.userAgent;
+      return /android|iphone|ipad|kindle/i.test(userAgent);
+    }
+
+    function getRatingUrl() {
+      if (isMobileDevice()) {
+        if (/android/i.test(userAgent)) {
+          // Play Store URL (replace with your actual app ID)
+          return "https://play.google.com/store/apps/details?id=YOUR_APP_ID";
+        } else {
+          // App Store URL (replace with your app ID)
+          return "https://apps.apple.com/app/your-app-ID";
+        }
+      }
+      return null; // No button for desktops
+    }
+
+    function createButton() {
+      const ratingUrl = getRatingUrl();
+      if (ratingUrl) {
+        const button = document.createElement("button");
+        button.textContent = "Rate Our App";
+        button.addEventListener("click", function() {
+          window.location.href = ratingUrl;
+        });
+        document.body.appendChild(button);
+      }
+    }
+
+    createButton();
+  </script>
+</body>
 </html>
