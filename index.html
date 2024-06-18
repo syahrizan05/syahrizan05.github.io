@@ -24,6 +24,8 @@
 
     function setButtonText() {
             const appStoreUrl = "https://apps.apple.com/app/1545938705"; // Replace with your actual App ID
+            const playStoreUrl = "https://play.google.com/store/apps/details?id=com.prasarana.pulse"; // Replace with your actual App ID
+
             const button = document.getElementById("deviceButton");
             const deviceType = isMobileDevice();
             if (deviceType == "ios") {
@@ -35,7 +37,14 @@
             }
 
             button.addEventListener("click", function () {
-                window.location.href = appStoreUrl;
+                if (deviceType == "ios") {
+                    window.location.href = appStoreUrl;
+                } else if (deviceType == "android") {
+                    window.location.href = playStoreUrl;
+                } else {
+                    window.location.href = "https://www.google.com";
+                }
+                
             });
 
         }
