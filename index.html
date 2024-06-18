@@ -23,16 +23,22 @@
         }
 
     function setButtonText() {
-      const button = document.getElementById("deviceButton");
-      const deviceType = isMobileDevice();
-      if (deviceType=="ios") {
-        button.textContent = "Rate Our iOS App ";
-      } else if (deviceType=="android") {
-        button.textContent = "Rate Our Android ";
-      }else {
-        button.textContent = "This is Computer";
-      }
-    }
+            const appStoreUrl = "https://apps.apple.com/app/1545938705"; // Replace with your actual App ID
+            const button = document.getElementById("deviceButton");
+            const deviceType = isMobileDevice();
+            if (deviceType == "ios") {
+                button.textContent = "Rate Our iOS App ";
+            } else if (deviceType == "android") {
+                button.textContent = "Rate Our Android ";
+            } else {
+                button.textContent = "This is Computer";
+            }
+
+            button.addEventListener("click", function () {
+                window.location.href = appStoreUrl;
+            });
+
+        }
 
     setButtonText();
   </script>
